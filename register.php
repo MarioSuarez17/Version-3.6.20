@@ -1,7 +1,8 @@
 <?php error_reporting (E_ALL ^ E_NOTICE); ?>
 
 <?php 
-    $C_Username='';
+// Registro
+$C_Username='';
     
     session_start(); 
     $ActionType = $_GET['ActionType'];
@@ -10,7 +11,7 @@
 		$ID = $_GET['ID'];
         $Loc = $_GET['Loc'];
 
-		$sql = "select * from tbl_customers where CustomerID= '".$ID."'";
+		$sql = "select * from tbl_usuario where usuarioID= '".$ID."'";
 		$Res = mysqli_query($Conn,$sql);
 		while($Rows = mysqli_fetch_array($Res))
 		{
@@ -20,7 +21,7 @@
 			$C_Firstname = $Rows[4];
 			$C_Middlename = $Rows[5];
 			$C_Lastname = $Rows[6];
-			$C_Address = $Rows[7];
+			$C_Telefono = $Rows[7];
 			$C_Email = $Rows[8];
 		}
 
@@ -107,12 +108,12 @@
 							
                             <div class="form-group">
 							  <label for="username">Username:</label>
-							  <input type="text" name="Username" class="form-control" id="Username" value="<?php if(isset($C_Username)){ echo $C_Username;} ?>" readonly>
+							  <input type="text" name="Username" class="form-control" id="Username" value="<?php if(isset($C_Username)){ echo $C_Username;} ?>">
 							</div>
 							
 							<div class="form-group">
 							  <label for="Password">Password:</label>
-							  <input type="Password" name="Password" class="form-control" id="Password" value="<?php if(isset( $C_Password)){ echo $C_Password;} ?>" readonly>
+							  <input type="Password" name="Password" class="form-control" id="Password" value="<?php if(isset( $C_Password)){ echo $C_Password;} ?>">
 							</div>
 
 							<div class="form-group">
@@ -122,45 +123,25 @@
 							
 							<div class="form-group">
 							  <label for="Middlename">Middlename:</label>
-							  <input type="text" name="Middlename" class="form-control" id="Middlename" value="<?php if(isset($C_Middlename)){ echo $C_Middlename;} ?>" readonly>
+							  <input type="text" name="Middlename" class="form-control" id="Middlename" value="<?php if(isset($C_Middlename)){ echo $C_Middlename;} ?>">
 							</div>
 							
 							<div class="form-group">
 							  <label for="Lastname">Lastname:</label>
-							  <input type="text" name="Lastname" class="form-control" id="Lastname" value="<?php if(isset($C_Lastname)){echo $C_Lastname; }?>" readonly>
+							  <input type="text" name="Lastname" class="form-control" id="Lastname" value="<?php if(isset($C_Lastname)){echo $C_Lastname; }?>">
 							</div>
 							
 							<div class="form-group">
-							  <label for="Address">Address:</label>
-							  <input type="text" name="Address" class="form-control" id="Address" value="<?php if(isset($C_Address)){ echo $C_Address;} ?>" >
+							  <label for="Telefono">Telefono:</label>
+							  <input type="number" name="Telefono" class="form-control" id="Telefono" value="<?php if(isset($C_Telefono)){ echo $C_Telefono;} ?>" >
 							</div>
 							
 							<div class="form-group">
 							  <label for="EmailAddress">Email Address:</label>
-							  <input type="email" name="EmailAddress" class="form-control" id="EmailAddress" value="<?php if(isset($C_Email)){ echo $C_Email;} ?>" readonly>
+							  <input type="email" name="EmailAddress" class="form-control" id="EmailAddress" value="<?php if(isset($C_Email)){ echo $C_Email;} ?>">
 							</div>
                             
-                            <div>
-        <!--MENU-->
-     
-        Gym: <select class="form-control" name="Gym">
-            <option></option>
-                         <?php
-                 require 'Connection.php';
-       
-              $sql = ("SELECT * FROM tbl_gimnasio WHERE Estado='Activo'");
-              $res = mysqli_query($Conn,$sql);
-
-                	while($Rows = mysqli_fetch_array($res))
-		         {
-                  echo '<option value="'.$Rows[0].'">'.$Rows[1]. '</option>';
-                }
-            
-      ?>
-          
-      </select>
-          
-            </div>
+ 
 
             <br>
 							
