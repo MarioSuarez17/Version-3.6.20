@@ -10,9 +10,10 @@ $_Role = $_GET['Role'];
 $query = "SELECT * FROM `tbl_customers` WHERE `Username` = '" . $_un . "' and `Role` = '" . $_Role . "'";
 $res = mysqli_query($Conn, $query);
 if ($res === false) {
-	die("Error" . mysqli_error($Conn));
+	die("No se pudo");
+	//die("Error" . mysqli_error($Conn));
 }
-$row = mysqli_fetch_array($res, MYSQLI_ASSOC);
+$row = sqlsrv_fetch_array($res,SQLSRV_FETCH_ASSOC);
 
 if ($row) {
 	if ($_Role == "User") {
