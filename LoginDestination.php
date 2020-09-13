@@ -6,15 +6,12 @@ include('Connection.php');
 $_un = $_POST['Username'];
 $_pass = $_POST['Password'];
 $_Role = $_GET['Role'];
-
-$query = "SELECT * FROM `tbl_customers` WHERE `Username` = '" . $_un . "' and `Role` = '" . $_Role . "'";
-$res = mysqli_query($Conn, $query);
+$query = "SELECT * FROM tbl_usuario WHERE usuario = '" . $_un . "' and rol = '" . $_Role . "' ";
+$res = sqlsrv_query($Conn, $query);
 if ($res === false) {
 	die("No se pudo");
-	//die("Error" . mysqli_error($Conn));
 }
 $row = sqlsrv_fetch_array($res,SQLSRV_FETCH_ASSOC);
-
 if ($row) {
 	if ($_Role == "User") {
 		$_SESSION["Username"] = $_un;
