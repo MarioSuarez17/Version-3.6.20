@@ -19,7 +19,8 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-	
+
+
 	<?php
 		$Username = null;
 		if(!empty($_SESSION["Username"]))
@@ -65,12 +66,12 @@
         
         <?php 
            require 'Connection.php';
-			$sql = "SELECT * FROM `tbl_platillos` WHERE  `Estado`='Activo' Limit 10 ";
-			$Resulta = mysqli_query($Conn,$sql);
+			$sql = "SELECT * FROM tbl_producto WHERE  estado='Activo' Limit 10 ";
+			$Resulta = sqlsrv_query($Conn,$sql);
 		?>
 		
 		
-		<?php while($Rows = mysqli_fetch_array($Resulta)){
+		<?php while($Rows = sqlsrv_fetch_array($Resulta)){
 		echo '	
 		<div class="col-sm-4 col-lg-4 col-md-4">
              <div class="thumbnail">
