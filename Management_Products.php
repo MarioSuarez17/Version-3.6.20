@@ -32,16 +32,20 @@
 		if(empty($_SESSION['Admin'])){echo '<script>window.open("index.php","_self",null,true);</script>';}else{
           
           require 'Connection.php';
-            $ID = $_GET['PlatilloID'];
+            $ID = $_GET['productoID'];
 
-            $sql = "select * from tbl_platillos where PlatilloID= '".$ID."'";
-            $Res = mysqli_query($Conn,$sql);
-            while($Rows = mysqli_fetch_array($Res))
+            $sql = "select * from tbl_producto where productoID= '".$ID."'";
+            $Res = sqlsrv_query($Conn,$sql);
+            while($Rows = sqlsrv_fetch_array($Res))
             {
                
                 $C_Platilloname = $Rows[1];
                 $C_PlatilloDescript = $Rows[2];
                 $C_PlatilloPrice = $Rows[3];
+                $C_ProductCatidad= $Rows[4];
+                $C_CategoriaID= $Rows[8];
+                //$C_name= $Rows[5];
+                
                 
             }
 
@@ -99,7 +103,7 @@
 					<div class="col-md-12">	
 						<div class="col-md-6">	
 							<form role="form" action="Management_Products_Action.php?ProductAction=
-							<?php echo $ProductAction; if($ProductAction=="Edit"){ echo "&PlatilloID=".$_GET['PlatilloID'];} ?>" 
+							<?php echo $ProductAction; if($ProductAction=="Edit"){ echo "&productoID=".$_GET['productoID'];} ?>" 
 							method="POST" enctype = "multipart/form-data">
 							
 							<div class="form-group">
@@ -116,10 +120,29 @@
 						<!--<label for="Estado">Estado:</label>-->
 						  <input type="hidden" name="Estado" class="form-control" id="Estado" value="Activo">
 		                        </div>
+
 							<div class="form-group">
 							  <label for="PlatilloPrice">Precio del Platillo:</label>
 							  <input type="text" name="PlatilloPrice" class="form-control" id="ProductPrice" value="<?php if(isset(  $C_PlatilloPrice )){ echo  $C_PlatilloPrice;} ?>" required>
 							</div>
+
+                            <div class="form-group">
+							  <label for="PlatilloQuantity">Cantidad:</label>
+							  <input type="text" name="PlatilloQuantity" class="form-control" id="PlatilloQuantity" value="<?php if(isset(  $C_ProductCatidad )){ echo  $C_ProductCatidad;} ?>" required>
+							</div>
+
+                            <!--<div class="form-group">
+							  <label for="ProductImage">Nombre de la Imagen:</label>
+							  <input type="text" name="ProductImage" class="form-control" id="ProductImage" value="?php if(isset(  $C_name )){ echo  $C_name;} ?>" required>
+							</div>-->
+
+                            <div class="form-group">
+							  <label for="CategoriaID">Categoría:</label>
+							  <input type="text" name="CategoriaID" class="form-control" 
+                              id="CategoriaID" value="<?php if(isset(  $C_CategoriaID )){ echo  
+                              $C_CategoriaID;} ?>" required>
+							</div>
+
 						</div>
 
 						<div class="col-md-6">	
