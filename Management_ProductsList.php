@@ -33,7 +33,7 @@
 	<br>
     <img id="logo" src="img/narime.jpg" alt="User">
     <br>
-	<div class="address-bar"><strong>Directo</strong> y a la Puerta de tu Casa</div>
+	<div class="address-bar"><strong>Directo </strong> y a la Puerta de tu Casa</div>
 
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">
@@ -74,21 +74,25 @@
 									<td>Nombre de Platillo</td>
 									<td>Descripcion de Platillo</td>
 									<td>Precio de Platillo</td>
+									<td>Cantidad</td>
+									<td>Categoría</td>
 									<td>Acción</td>
 								</tr>
 								
 								<?php 
 									require 'Connection.php';
-									$sql = "select * from tbl_platillos where Estado='Activo'";
-									$Resulta = mysqli_query($Conn,$sql);
-									while($Rows = mysqli_fetch_array($Resulta)):; 
+									$sql = "select * from tbl_producto where Estado='Activo'";
+									$Resulta = sqlsrv_query($Conn,$sql);
+									while($Rows = sqlsrv_fetch_array($Resulta)):; 
 								?>
 								<tr style="color: black"> <!--Establece el tamaño-->
-									<td><img style="width: 50px; height: 50px;" src="data:image;base64,<?php echo $Rows[5];?>"></td>
+									<td><img style="width: 50px; height: 50px;" src="data:image;base64,<?php echo $Rows[6];?>"></td>
 									<td><?php $cid = $Rows[0]; echo $cid; ?></td>
 									<td><?php echo $Rows[1]; ?></td>
 									<td><?php echo $Rows[2]; ?></td>
 									<td><?php echo $Rows[3]; ?></td>
+									<td><?php echo $Rows[4]; ?></td>
+									<td><?php echo $Rows[8]; ?></td>
 									
 			
 									<td>
@@ -126,13 +130,13 @@
 			{
 				if(confirm("Seguro deseas editar este producto?")==true)
 				{
-					window.open("Management_Products.php?PlatilloID="+pid+"&ProductAction="+action,"_self",null,true);
+					window.open("Management_Products.php?productoID="+pid+"&ProductAction="+action,"_self",null,true);
 				}
 			}else if(action == "Delete")
 			{
 				if(confirm("Seguro deseas eliminar este producto?")==true)
 				{
-					window.open("Management_Products_Action.php?ProdID="+pid+"&ProductAction="+action,"_self",null,true);
+					window.open("Management_Products_Action.php?productoID="+pid+"&ProductAction="+action,"_self",null,true);
 				}
 			}
 		}
