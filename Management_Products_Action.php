@@ -73,7 +73,7 @@
 	}else if($ProductAction == "Delete")
 	{//Ver para establer para cambiar de estado REVISAR
 		$_PlatilloID = $_GET["productoID"];
-		$sql = "UPDATE tbl_producto SET Estado = 'Desactivo' where productoID = $_PlatilloID";
+		$sql = "UPDATE tbl_producto SET Estado = 'Inactivo' where productoID = $_PlatilloID"; //Cambiado por Inactivo
 		$res = sqlsrv_query($Conn,$sql);
 		if($res)
 		{
