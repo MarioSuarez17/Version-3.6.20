@@ -1,5 +1,3 @@
-
-
 <?php
 
 	session_start();
@@ -14,7 +12,6 @@
 		$_ProductDescript = $_POST["PlatilloDescript"];
 		$_PlatilloPrice = $_POST["PlatilloPrice"];
 		$_ProductCatidad = $_POST["PlatilloQuantity"];
-		
 		$_Estado = $_POST["Estado"];
 		
 		$image = addslashes($_FILES['ProductImage']['tmp_name']);
@@ -23,10 +20,13 @@
 		$image = base64_encode($image);
 		$_CategoriaID = $_POST["CategoriaID"];
 		
-		$sql = "INSERT INTO tbl_producto(nombre,descripcion,precio,cantidad,imageNombre,imagen,estado,categoriaID)" . 
-		"VALUES ('$_PlatilloName','$_ProductDescript','$_PlatilloPrice',$_ProductCatidad,'$name','$image','$_Estado',$_CategoriaID)";   //,
-		$res = sqlsrv_query($Conn,$sql);
-		if($res)
+		//$sql = "INSERT INTO tbl_producto(nombre,descripcion,precio,cantidad,imageNombre,imagen,estado,categoriaID)" . 
+		//"VALUES ('$_PlatilloName','$_ProductDescript','$_PlatilloPrice',$_ProductCatidad,'$name','$image','$_Estado',$_CategoriaID)";   //,
+		//$res = sqlsrv_query($Conn,$sql);
+		$sql = "sp_insert_product '$_PlatilloName','$_ProductDescript','$_PlatilloPrice', $_ProductCatidad,'$name','$image','Activo',$_CategoriaID";
+		$stmt = sqlsrv_query($Conn, $sql);
+		
+		if($stmt)
 		{
 			echo '<script>window.alert("Product has been successfully created!"),window.open("Management_ProductsList.php","_self",null,true);</script>';
 			     
@@ -73,17 +73,18 @@
 	}else if($ProductAction == "Delete")
 	{//Ver para establer para cambiar de estado REVISAR
 		$_PlatilloID = $_GET["productoID"];
-		$sql = "UPDATE tbl_producto SET Estado = 'Inactivo' where productoID = $_PlatilloID"; //Cambiado por Inactivo
-		$res = sqlsrv_query($Conn,$sql);
-		if($res)
+		//$sql = "UPDATE tbl_producto SET Estado = 'Inactivo' where productoID = $_PlatilloID"; //Cambiado por Inactivo
+		//$res = sqlsrv_query($Conn,$sql);
+		$sql = "sp_estado_product $_PlatilloID,'Inactivo'";
+		$stmt = sqlsrv_query($Conn, $sql);
+
+		if($stmt)
 		{
 			echo '<script>window.alert("Product has been successfully Deleted!"); window.open("Management_ProductsList.php","_self",null,true)</script>';
 		}
 	}
 
 ?>
-
-
 
 
 
