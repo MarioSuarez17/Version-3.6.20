@@ -58,14 +58,16 @@
         
 		$UN = $_SESSION['Username'];
 		$PASS = $_SESSION['Password'];
-		$PlatilloID = $_GET['PlatilloID'];
+        $PlatilloID = $_GET['PlatilloID'];
+        //$PlatilloID = $_GET['PlatilloID'];
 		
 		if(empty($UN)){echo '<script>window.open("Login.php?Role=User","_self",null,true);</script>';}
 		
-		$sql = "SELECT * FROM `tbl_customers` WHERE `Username` = '".$UN."' and `Password` = '".$PASS."' and `Role` = 'User'";
-		$res = mysqli_query($Conn,$sql);
-		while($Rows = mysqli_fetch_array($res)){
-			$CustomerID = $Rows[0];
+		$sql = "SELECT * FROM tbl_usuario WHERE usuario = '".$UN."' and contrasenna = '".$PASS."' and rol = 'User'";
+		$res = sqlsrv_query($Conn,$sql);
+		while($Rows = sqlsrv_fetch_array($res)){
+            $CustomerID = $Rows[0];
+            //$Especificacion = $Rows[5];
 		}
 	?>
 
@@ -80,19 +82,19 @@
                 </div>
 
                 <div class="col-md-6">
-                 <form role="form" action="OrderAction.php?PlatilloID=<?php echo $PlatilloID; ?>&CustomerID=<?php echo $CustomerID; ?>" method="POST">
+                 <form role="form" action="OrderAction.php?productoID=<?php echo $PlatilloID; ?>&usuarioID=<?php echo $CustomerID; ?>" method="POST">
 					<div class="form-group">
-					  <label for="PlatilloID">Platillo ID:</label>
-					  <input type="text" name="PlatilloID" class="form-control" id="PlatilloID" value="<?php echo $PlatilloID; ?>" disabled>
+					  <label for="productoID">Platillo ID:</label>
+					  <input type="text" name="productoID" class="form-control" id="productoID" value="<?php echo $PlatilloID; ?>" disabled>
 					</div>
 					<div class="form-group">
-					  <label for="CustomerID">Customer ID:</label>
-					  <input type="text" name="CustomerID" class="form-control" id="CustomerID" value="<?php echo $CustomerID; ?>" disabled>
+					  <label for="usuarioID">Customer ID:</label>
+					  <input type="text" name="usuarioID" class="form-control" id="usuarioID" value="<?php echo $CustomerID; ?>" disabled>
 					</div>
 				<!--Cambiar para alguna espeficacion de Platillo-->
 					<div class="form-group">
-						<label for="Espeficacion">Espeficaciones:</label>
-						<input type="text" name="Espeficacion" class="form-control" id="Espeficacion">
+						<label for="espeficacion">Espeficaciones:</label>
+						<input type="text" name="espeficacion" class="form-control" id="espeficacion">
 					</div>
 					<div class="form-group">
 						<!--<label for="Estado">Estado:</label>-->

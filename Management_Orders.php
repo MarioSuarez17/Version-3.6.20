@@ -80,9 +80,7 @@
 								
 								<?php 
 								require 'Connection.php';
-								$sqlI = "SELECT tbl_orders.OrderID, tbl_orders.CustomerID, tbl_platillos.Platilloname, tbl_platillos.PlatilloDescript, tbl_orders.Estado, 
-								tbl_orders.Especificacion, tbl_platillos.PlatilloPrice, tbl_orders.DateOrdered FROM tbl_platillos RIGHT JOIN 
-								tbl_orders on tbl_orders.PlatilloID = tbl_platillos.PlatilloID where tbl_orders.Estado='Pendiente' ORDER BY tbl_orders.OrderID";
+								$sqlI = "sp_query_order";
 								$Resulta = mysqli_query($Conn,$sqlI);
 								while($Rows = mysqli_fetch_array($Resulta)):; 
 								?>

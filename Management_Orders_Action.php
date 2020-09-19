@@ -4,9 +4,9 @@
 	require 'Connection.php';
     $ID = $_GET["id"];
     
-	$sql = "UPDATE tbl_orders SET Estado = 'Cancelado' where OrderID = $ID";
+	$sql = "UPDATE tbl_orden SET estado = 'Cancelado' where ordenID = $ID";
     
-    $res = mysqli_query($Conn,$sql);
+    $res = sqlsrv_query($Conn,$sql);
 	if($res){
 		echo '<script>window.open("Management_Orders.php","_self",null,true);</script>';
 	}

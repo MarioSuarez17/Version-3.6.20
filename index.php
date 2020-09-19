@@ -66,17 +66,18 @@
         
         <?php 
            require 'Connection.php';
-			$sql = "SELECT * FROM tbl_producto WHERE  estado='Activo' Limit 10 ";
+            //$sql = "SELECT * FROM tbl_producto WHERE  estado='Activo' Limit 10 ";
+            $sql = "sp_query_product_activo";
 			$Resulta = sqlsrv_query($Conn,$sql);
 		?>
 		
 		
 		<?php while($Rows = sqlsrv_fetch_array($Resulta)){
-		echo '	
-		<div class="col-sm-4 col-lg-4 col-md-4">
+        echo '	
+        <div class="col-sm-4 col-lg-4 col-md-4">
              <div class="thumbnail">
 				<h4 style="text-align: center;">'.$Rows[1].'</h4>
-                <img style="border: 2px solid gray; border-radius: 10px; height: 229px; width: 298px;" src="data:image;base64,'.$Rows[5].'" alt="">
+                <img style="border: 2px solid gray; border-radius: 10px; height: 229px; width: 298px;" src="data:image;base64,'.$Rows[6].'" alt="">
                 <div class="caption">
 					<p><strong>Nombre del Platillo:</strong> '.$Rows[1].'</p>
 					<p><strong>Descripcion:</strong> '.$Rows[2].'</p>
