@@ -81,7 +81,7 @@
 								
 								<?php 
 									require 'Connection.php';
-									$sql = "select * from tbl_producto where Estado='Activo'";
+									$sql = "sp_query_product";
 									$Resulta = sqlsrv_query($Conn,$sql);
 									while($Rows = sqlsrv_fetch_array($Resulta)):; 
 								?>
