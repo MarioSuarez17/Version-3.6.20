@@ -1,4 +1,3 @@
-
 <?php session_start(); ?>
 <?php error_reporting (E_ALL ^ E_NOTICE); ?>
 <!DOCTYPE html>
@@ -24,7 +23,6 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 	<?php
-	
 		$Username = null;
 		if(!empty($_SESSION["Username"]))
 		{$Username = $_SESSION["Username"];}
@@ -48,16 +46,7 @@
                 
                 
             }
-
-
-
-
         }
-
-
-
-
-
 		?>
 </head>
 
@@ -91,6 +80,7 @@
         </div>
     </nav>
 
+    
     <div class="container">
 
         <div class="row">

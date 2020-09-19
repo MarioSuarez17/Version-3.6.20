@@ -51,7 +51,7 @@
 				<li><a href="index.php">Inicio</a></li>
 					<li><a href="Management_Orders.php">Órdenes</a></li>
 					<li><a href="Management_Products.php?ProductAction=Add">Agregar Productos</a></li>
-					<li><a href="Management_ProductsList.php">Productos</a></li>
+					<li><a href="Management_productList_desactivo.php">Desactivados</a></li>
                     <li><a href="Management_Customers.php">Clientes</a></li>
                 </ul>
             </div>
@@ -81,7 +81,7 @@
 								
 								<?php 
 									require 'Connection.php';
-									$sql = "sp_query_product";
+									$sql = "sp_query_product_activo";
 									$Resulta = sqlsrv_query($Conn,$sql);
 									while($Rows = sqlsrv_fetch_array($Resulta)):; 
 								?>
