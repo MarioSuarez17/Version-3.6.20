@@ -82,23 +82,23 @@
                 </div>
 
                 <div class="col-md-6">
-                 <form role="form" action="OrderAction.php?productoID=<?php echo $PlatilloID; ?>&usuarioID=<?php echo $CustomerID; ?>" method="POST">
+                 <form role="form" action="OrderAction.php?productoID=<?php echo $PlatilloID; ?>&usuarioID=<?php echo $CustomerID; ?>&especificacion=<?php echo $Espeficacion; ?>&estado=<?php echo $Estado; ?>" method="POST">
 					<div class="form-group">
 					  <label for="productoID">Platillo ID:</label>
 					  <input type="text" name="productoID" class="form-control" id="productoID" value="<?php echo $PlatilloID; ?>" disabled>
 					</div>
 					<div class="form-group">
-					  <label for="usuarioID">Customer ID:</label>
+					  <label for="usuarioID">Usuario ID:</label>
 					  <input type="text" name="usuarioID" class="form-control" id="usuarioID" value="<?php echo $CustomerID; ?>" disabled>
 					</div>
 				<!--Cambiar para alguna espeficacion de Platillo-->
-					<div class="form-group">
-						<label for="espeficacion">Espeficaciones:</label>
-						<input type="text" name="espeficacion" class="form-control" id="espeficacion">
+                	<div class="form-group">
+						<label for="especificacion">Espeficaciones:</label>
+						<input type="text" name="especificacion" class="form-control" id="especificacion" value="<?php echo $Espeficacion; ?>" disabled>>
 					</div>
 					<div class="form-group">
 						<!--<label for="Estado">Estado:</label>-->
-						<input type="hidden" name="Estado" class="form-control" id="Estado" value="Pendiente">
+						<input type="hidden" name="estado" class="form-control" id="estado" value="Pendiente">
 					</div>
 						<button type="submit" style="float: right;" class="btn btn-default">Submit</button>
 					</form>

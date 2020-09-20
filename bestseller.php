@@ -74,9 +74,10 @@
 			<?php
 				$num = 5;
 				require 'Connection.php';
-				$sql = "SELECT * FROM `tbl_platillos` WHERE `Estado`='Activo'  Limit 5";
-				$Resulta = mysqli_query($Conn,$sql);
-				while($Rows = mysqli_fetch_array($Resulta)){
+				//$sql = "SELECT * FROM `tbl_platillos` WHERE `Estado`='Activo'  Limit 5";
+				$sql = "sp_query_product_activo";
+				$Resulta = sqlsrv_query($Conn,$sql);
+				while($Rows = sqlsrv_fetch_array($Resulta)){
 					echo '	
 						<div class="row">
 							<div class="box" style="border-radius: 10px;">
@@ -84,7 +85,7 @@
 									<hr>
 									<h2 class="intro-text text-center">Top '. $num.'</h2>
 									<hr>
-									<img class="img-responsive img-border img-left" src="data:image;base64,'.$Rows[5].'" alt="">
+									<img class="img-responsive img-border img-left" src="data:image;base64,'.$Rows[6].'" alt="">
 									<hr class="visible-xs">
 									<p><strong>Nombre del Platillo:</strong> '.$Rows[1].'</p>
 									<p><strong>Descripcion:</strong> '.$Rows[2].'</p>

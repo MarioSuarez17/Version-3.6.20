@@ -66,17 +66,18 @@
         
         require 'Connection.php';
     
-			$sql = "SELECT * FROM `tbl_platillos` WHERE `Estado`= 'Activo' order by PlatilloPrice ";
-			$Resulta = mysqli_query($Conn,$sql);
+            //$sql = "SELECT * FROM `tbl_platillos` WHERE `Estado`= 'Activo' order by PlatilloPrice ";
+            $sql = "sp_query_product_activo";
+			$Resulta = sqlsrv_query($Conn,$sql);
 		?>
 		
 		
-		<?php while($Rows = mysqli_fetch_array($Resulta)){
+		<?php while($Rows = sqlsrv_fetch_array($Resulta)){
 		echo '	
 		<div class="col-sm-4 col-lg-4 col-md-4">
              <div class="thumbnail">
 				<h4 style="text-align: center;">'.$Rows[1].'</h4>
-                <img style="border: 2px solid gray; border-radius: 10px; " src="data:image;base64,'.$Rows[5].'" alt="">
+                <img style="border: 2px solid gray; border-radius: 10px; " src="data:image;base64,'.$Rows[6].'" alt="">
                 <div class="caption">
 					<p><strong>Nombre Platillo:</strong> '.$Rows[1].'</p>
 					<p><strong>Descripcion:</strong> '.$Rows[2].'</p>

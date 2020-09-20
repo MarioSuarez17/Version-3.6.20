@@ -3,9 +3,10 @@
 	require 'Connection.php';
 	$PlatilloID = $_GET["productoID"];
 	$CustomerID = $_GET["usuarioID"];
-	$Estado = $_POST["estado"];
-	$Espeficacion = $_POST["especificacion"];
+	$Estado = $_POST["Estado"];
+	//$Espeficacion = $_POST["especificacion"];
 	$DateOrder = date("Y/m/d");
+
 	
 	if($_SESSION['Username'] == null || $_SESSION['Password'] == null)
 	{
@@ -13,7 +14,7 @@
 	}
 	
 	$sql2 = "INSERT INTO tbl_orden(productoID,usuarioID,estado,especificacion,fecha) ".
-			"VALUES ($PlatilloID,$CustomerID,'$Estado','$Espeficacion',$DateOrder)";
+			"VALUES ($PlatilloID,$CustomerID,'$Estado',$DateOrder)"; //'$Espeficacion',
 	$res2 = sqlsrv_query($Conn,$sql2);
 	if($res2){
 		echo "<script>window.alert('Success'); window.open('index.php','_self',null,true);</script>";
