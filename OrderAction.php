@@ -1,8 +1,8 @@
 <?php
 	session_start();
 	require 'Connection.php';
-	$PlatilloID = $_GET["productoID"];
-	$CustomerID = $_GET["usuarioID"];
+	$PlatilloID = $_GET["PlatilloID"];
+	$CustomerID = $_GET["CustomerID"];
 	$Estado = $_POST["Estado"];
 	//$Espeficacion = $_POST["especificacion"];
 	$DateOrder = date("Y/m/d");
@@ -13,7 +13,7 @@
 		echo "<script>window.open('Login.php?Role=User','_self',null,true); window.alert('Please Login to Process your order');</script>";
 	}
 	
-	$sql2 = "INSERT INTO tbl_orden(productoID,usuarioID,estado,especificacion,fecha) ".
+	$sql2 = "INSERT INTO tbl_orden(productoID,usuarioID,estado,fecha) ".
 			"VALUES ($PlatilloID,$CustomerID,'$Estado',$DateOrder)"; //'$Espeficacion',
 	$res2 = sqlsrv_query($Conn,$sql2);
 	if($res2){

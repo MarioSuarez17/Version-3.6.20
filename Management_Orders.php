@@ -81,8 +81,8 @@
 								<?php 
 								require 'Connection.php';
 								$sqlI = "sp_query_order";
-								$Resulta = mysqli_query($Conn,$sqlI);
-								while($Rows = mysqli_fetch_array($Resulta)):; 
+								$Resulta = sqlsrv_query($Conn,$sqlI);
+								while($Rows = sqlsrv_fetch_array($Resulta)):; 
 								?>
 								<tr style="color: black">
 								<td><?php echo $Rows[0]; ?></td>

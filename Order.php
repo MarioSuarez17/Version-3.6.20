@@ -82,23 +82,23 @@
                 </div>
 
                 <div class="col-md-6">
-                 <form role="form" action="OrderAction.php?productoID=<?php echo $PlatilloID; ?>&usuarioID=<?php echo $CustomerID; ?>&especificacion=<?php echo $Espeficacion; ?>&estado=<?php echo $Estado; ?>" method="POST">
+                 <form role="form" action="OrderAction.php?PlatilloID=<?php echo $PlatilloID; ?>&CustomerID=<?php echo $CustomerID; ?>" method="POST">
 					<div class="form-group">
-					  <label for="productoID">Platillo ID:</label>
-					  <input type="text" name="productoID" class="form-control" id="productoID" value="<?php echo $PlatilloID; ?>" disabled>
+					  <label for="PlatilloID">Platillo ID:</label>
+					  <input type="text" name="PlatilloID" class="form-control" id="PlatilloID" value="<?php echo $PlatilloID; ?>" disabled>
 					</div>
 					<div class="form-group">
-					  <label for="usuarioID">Usuario ID:</label>
-					  <input type="text" name="usuarioID" class="form-control" id="usuarioID" value="<?php echo $CustomerID; ?>" disabled>
+					  <label for="CustomerID">Customer ID:</label>
+					  <input type="text" name="CustomerID" class="form-control" id="CustomerID" value="<?php echo $CustomerID; ?>" disabled>
 					</div>
 				<!--Cambiar para alguna espeficacion de Platillo-->
-                	<div class="form-group">
-						<label for="especificacion">Espeficaciones:</label>
-						<input type="text" name="especificacion" class="form-control" id="especificacion" value="<?php echo $Espeficacion; ?>" disabled>>
+					<div class="form-group">
+						<label for="Espeficacion">Espeficaciones:</label>
+						<input type="text" name="Espeficacion" class="form-control" id="Espeficacion">
 					</div>
 					<div class="form-group">
 						<!--<label for="Estado">Estado:</label>-->
-						<input type="hidden" name="estado" class="form-control" id="estado" value="Pendiente">
+						<input type="hidden" name="Estado" class="form-control" id="Estado" value="Pendiente">
 					</div>
 						<button type="submit" style="float: right;" class="btn btn-default">Submit</button>
 					</form>
