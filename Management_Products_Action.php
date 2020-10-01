@@ -134,21 +134,41 @@ if($ProductAction == "Add")
 }else if($ProductAction == "Delete")
 {
 	$_PlatilloID = $_GET["productoID"];
-	
-	$sql = "sp_estado_product $_PlatilloID,'Inactivo'";
-	$stmt = sqlsrv_query($Conn, $sql);
 
-	if($stmt)
+	// Se crean los parámetros
+	$myparams['productoID'] = $_PlatilloID;
+
+	//Se crea un array con de parámetros
+	$procedure_params = array(
+		array(&$myparams['productoID'], SQLSRV_PARAM_IN),
+		
+	);
+
+	$sql = "sp_estado_product @productoID=?,@estado='Inactivo'";
+	$stmt = sqlsrv_prepare($Conn, $sql,$procedure_params);
+
+	if(sqlsrv_execute($stmt))
 	{
 		echo '<script>window.alert("Product has been successfully Deleted!"); window.open("Management_ProductsList.php","_self",null,true)</script>';
 	}
 }else if($ProductAction == "Activo"){
+
 	$_PlatilloID = $_GET["productoID"];
 	
-	$sql = "sp_estado_product $_PlatilloID,'Activo'";
-	$stmt = sqlsrv_query($Conn, $sql);
+	// Se crean los parámetros
+	$myparams['productoID'] = $_PlatilloID;
 
-	if($stmt)
+	//Se crea un array con de parámetros
+	$procedure_params = array(
+		array(&$myparams['productoID'], SQLSRV_PARAM_IN),
+		
+	);
+
+	$sql = "sp_estado_product @productoID=?,@estado='Activo'";
+	$stmt = sqlsrv_prepare($Conn, $sql,$procedure_params);
+
+	if(sqlsrv_execute($stmt))
+
 	{
 		echo '<script>window.alert("Product has been successfully Activated!"); window.open("Management_productList_desactivo.php","_self",null,true)</script>';
 	}
