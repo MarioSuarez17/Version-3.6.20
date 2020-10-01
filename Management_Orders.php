@@ -62,7 +62,7 @@
             <div class="box">
                 <div class="col-lg-12">
 						<hr>
-						<h2 class="intro-text text-center">Órdenes</h2>
+						<h2 class="intro-text text-center">Órdenes Pendientes</h2>
 						<hr>
 						<div class="table-responsive">
 							<table border="5px" class="table">
@@ -94,10 +94,9 @@
 								<td><?php echo $Rows[6]; ?></td>
 								<td><?php echo $Rows[7]; ?></td>
 								<td>
-                                <a href="#" onclick="CancelOrderOnclick(<?php echo $Rows[0]; ?>);">Cancelar</a>
-                                |
-                                <a href="#" onclick="CompleteOrderOnclick(<?php echo $Rows[0]; ?>);">Listo</a>
-								</td>
+                                <a href="#" onclick="OrderOnclick('Cancelar',<?php echo $Rows[0]; ?>);">Cancelar</a>|
+                                <a href="#" onclick="OrderOnclick('Completo',<?php echo $Rows[0]; ?>);">Listo</a>
+                                </td>
 								<?php endwhile; ?>
 								</tr>
 							</table>
@@ -123,26 +122,23 @@
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
 	<script>
-		function CancelOrderOnclick(ID)
+		function OrderOnclick(action,ID)
 		{
-			if(confirm("Are you sure you want to Delete this order?")==true)
-			{
-				window.open("Management_Orders_Action.php?id="+ID,"",null,true);
-			}
+            if(action == "Cancelar")
+            {
+                if(confirm("Are you sure you want to Delete this order?")==true)
+                {
+                    window.open("Management_Orders_Action.php?ordenID="+ID+"&OrderAction="+action,"_self",null,true);	
+                }
+            }else if(action == "Completo")
+            {
+                if(confirm("Are you sure you want to Complete this order?")==true)
+                {
+                    window.open("Management_Orders_Action.php?ordenID="+ID+"&OrderAction="+action,"_self",null,true);	
+                }
+            }
 		}
-
-        function CompleteOrderOnclick(ID)
-		{
-			if(confirm("Are you sure you want to Complete this order?")==true)
-			{
-				window.open("Management_Orders_Complete.php?id="+ID,"",null,true);
-			}
-		}
-
-
-
 	</script>
-
 </body>
 
 </html>
